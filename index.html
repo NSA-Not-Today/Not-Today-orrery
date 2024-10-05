@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <title>All These Worlds Are Yours</title>
 
-        <!-- shaders -->
-        <script type="x-shader/x-vertex" id="vertexshader">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>All These Worlds Are Yours</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- shaders -->
+    <script type="x-shader/x-vertex" id="vertexshader">
 			varying vec2 vUv;
 			void main() {
 				vUv = uv;
 				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 			}
 		</script>
-		<script type="x-shader/x-fragment" id="fragmentshader">
+    <script type="x-shader/x-fragment" id="fragmentshader">
 			uniform sampler2D baseTexture;
 			uniform sampler2D bloomTexture;
 			varying vec2 vUv;
@@ -24,28 +27,28 @@
 		</script>
 
 
-    
+
 
-        <link rel="apple-touch-icon" sizes="57x57" href="/Not-Today-orrery/assets/apple-icon-57x57-CagKYjeH.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="/Not-Today-orrery/assets/apple-icon-60x60-DKsdFK8R.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/Not-Today-orrery/assets/apple-icon-72x72-Hhuhi0ym.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="/Not-Today-orrery/assets/apple-icon-76x76-BRsSz83T.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/Not-Today-orrery/assets/apple-icon-114x114-DoiKgaiv.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="/Not-Today-orrery/assets/apple-icon-120x120-8Q8xtzv7.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="/Not-Today-orrery/assets/apple-icon-144x144-CkAXcZds.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="/Not-Today-orrery/assets/apple-icon-152x152-kE4N9gsx.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="/Not-Today-orrery/assets/apple-icon-180x180-BaouH_Wc.png">
-        <link rel="icon" type="image/png" sizes="192x192"  href="/Not-Today-orrery/assets/android-icon-192x192-7JblPWo7.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/Not-Today-orrery/assets/favicon-32x32-Opz_wN4f.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="/Not-Today-orrery/assets/favicon-96x96-CtL_35-t.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/Not-Today-orrery/assets/favicon-16x16-Bylu_aHq.png">
-        <link rel="manifest" href="/Not-Today-orrery/assets/manifest-CO0q9IVi.json">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="data/ms-icon-144x144.png">
-        <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="57x57" href="/Not-Today-orrery/assets/apple-icon-57x57-CagKYjeH.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/Not-Today-orrery/assets/apple-icon-60x60-DKsdFK8R.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/Not-Today-orrery/assets/apple-icon-72x72-Hhuhi0ym.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/Not-Today-orrery/assets/apple-icon-76x76-BRsSz83T.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/Not-Today-orrery/assets/apple-icon-114x114-DoiKgaiv.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/Not-Today-orrery/assets/apple-icon-120x120-8Q8xtzv7.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/Not-Today-orrery/assets/apple-icon-144x144-CkAXcZds.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/Not-Today-orrery/assets/apple-icon-152x152-kE4N9gsx.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/Not-Today-orrery/assets/apple-icon-180x180-BaouH_Wc.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/Not-Today-orrery/assets/android-icon-192x192-7JblPWo7.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Not-Today-orrery/assets/favicon-32x32-Opz_wN4f.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/Not-Today-orrery/assets/favicon-96x96-CtL_35-t.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Not-Today-orrery/assets/favicon-16x16-Bylu_aHq.png">
+    <link rel="manifest" href="/Not-Today-orrery/assets/manifest-CO0q9IVi.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="data/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
-        
-        <script type="importmap">
+
+    <script type="importmap">
             {
                 "imports": {
                     "three" : "./node_modules/three/build/three.module.js", 
@@ -53,167 +56,178 @@
                 }
             }
         </script>
-      <script type="module" crossorigin src="/Not-Today-orrery/assets/index-D5_qAn_y.js"></script>
-      <link rel="stylesheet" crossorigin href="/Not-Today-orrery/assets/index-BYEywQnC.css">
-    </head>
-    <body>
-        <div id="inputBox">
-            <h3 id="date"></h3>
-            <div>
-                <table>
-                    <tr>
-                        <td>
-                            <button id="now" title="Set time to now"><img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20width='100%25'%20height='100%25'%20viewBox='0%200%20756%20756'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20xml:space='preserve'%20xmlns:serif='http://www.serif.com/'%20style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3e%3cg%20transform='matrix(-2.05864e-16,1.12067,-0.734091,-1.3485e-16,344.624,152.708)'%3e%3cpath%20d='M292.658,39.838L448.947,352.415L136.369,352.415L292.658,39.838Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3cg%20transform='matrix(-7.16142e-17,1.16955,1.16955,7.16142e-17,-97.5997,-166.723)'%3e%3cpath%20d='M337.291,156.914C268.479,209.584%20228.122,291.297%20228.122,377.953C228.122,531.582%20352.849,656.31%20506.479,656.31C580.304,656.31%20651.105,626.983%20703.307,574.781L617.026,488.5C587.707,517.819%20547.942,534.29%20506.479,534.29C420.194,534.29%20350.141,464.238%20350.141,377.953C350.141,329.283%20372.808,283.39%20411.455,253.808L337.291,156.914Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3c/svg%3e"></button>
-                        </td>
-                        <td>
-                            <button id="reverse" title="Slow/reverse time"><img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20width='100%25'%20height='100%25'%20viewBox='0%200%20756%20756'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20xml:space='preserve'%20xmlns:serif='http://www.serif.com/'%20style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3e%3cg%3e%3cg%20transform='matrix(1.09058e-16,-1.78105,1.16667,7.14377e-17,263.071,899.19)'%3e%3cpath%20d='M292.658,39.838L448.947,352.415L136.369,352.415L292.658,39.838Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3cg%20transform='matrix(1,0,0,1,-29.6626,0)'%3e%3cpath%20d='M464.269,208.365L242.094,377.953L464.269,547.54L464.269,656.31L99.596,377.953L464.269,99.596L464.269,208.365Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e"></button>
-                        </td>
-                        <td id="speedfield">
-                            <span id="speed"></span><br>
-                            FPS:&nbsp;<span id="fps"></span>
-                        </td>
-                        <td>
-                            <button id="forward" title="Advance time"><img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20width='100%25'%20height='100%25'%20viewBox='0%200%20756%20756'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20xml:space='preserve'%20xmlns:serif='http://www.serif.com/'%20style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3e%3cg%20transform='matrix(-1,1.22465e-16,-1.22465e-16,-1,744.156,755.906)'%3e%3cg%20transform='matrix(1.09058e-16,-1.78105,1.16667,7.14377e-17,263.071,899.19)'%3e%3cpath%20d='M292.658,39.838L448.947,352.415L136.369,352.415L292.658,39.838Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3cg%20transform='matrix(1,0,0,1,-29.6626,0)'%3e%3cpath%20d='M464.269,208.365L242.094,377.953L464.269,547.54L464.269,656.31L99.596,377.953L464.269,99.596L464.269,208.365Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e"></button>
-                        </td>
-                        <td>
-                            <button id="play" title="Play/pause"><img id="playpause" src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20width='100%25'%20height='100%25'%20viewBox='0%200%20756%20756'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20xml:space='preserve'%20xmlns:serif='http://www.serif.com/'%20style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3e%3cg%20id='Layer2'%3e%3cg%20transform='matrix(1,0,0,1,-18.4112,0)'%3e%3crect%20x='214.027'%20y='99.596'%20width='146.042'%20height='556.714'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3cg%20transform='matrix(1,0,0,1,200.221,0)'%3e%3crect%20x='214.027'%20y='99.596'%20width='146.042'%20height='556.714'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" id="latlong">
-                            Geolocation:&nbsp;<span id="lat">Default (Greenwich, UK)</span>&nbsp;<span id="long"></span>
-                        </td>
-                    </tr>
-                    <tr class="extraData">
-                        <td colspan="5">
-                            MJD:&nbsp;<span id="mjd"></span>&nbsp;&nbsp;&bull;&nbsp;&nbsp;LST:&nbsp;<span id="lst"></span>&deg;
-                        </td>
-                    </tr>
-                </table>
-                <label for="autocomplete"><b>SEARCH FOR AN OBJECT:</b></label>
-                <input id="autocomplete" title="Type an object's name">
-                <fieldset>
-                    <legend>Include:&nbsp;&nbsp;</legend>
-                    <input type="checkbox" name="moonBox" id="moonBox" title="Allow moons in search" checked>
-                    <label for="moonBox">Moons</label>&nbsp;&nbsp;
-                    <input type="checkbox" name="asteroidBox" id="asteroidBox" title="Allow asteroids in search" checked>
-                    <label for="asteroidBox">Asteroids</label>&nbsp;&nbsp;
-                    <input type="checkbox" name="cometBox" id="cometBox" title="Allow comets in search" checked>
-                    <label for="cometBox">Comets</label>
-                </fieldset>
-                <div id="info">
-                    <a id="infohead" href="" target="_blank"></a><br>
-                    <a href="" target="_blank"><img src="" class="wikipic"></a><br>
-                    <b><span id="planetInfo" class="data"></span></b><br>
-                    Semimajor Axis:&nbsp;<span id="semiMajorAxis" class="data"></span><br>
-                    Orbital Period:&nbsp;<span id="period" class="data"></span><br>
-                    Eccentricity:&nbsp;<span id="eccentricity" class="data"></span><br>
-                    Inclination:&nbsp;<span id="inclination" class="data"></span>&deg;<br>
-                    Orbital Velocity: <span id="orbitVel" class="data"></span>&nbsp;km/s<br>
-                    Radius:&nbsp;<span id="radius" class="data"></span>&nbsp;km<br>
-                    Absolute Magnitude:&nbsp;<span id="absMag" class="data"></span>
-                    <span id="earthRel">
-                        <br>Apparent Magnitude:&nbsp;<span id="appMag" class="data"></span><br>
-                        Distance from Sun:&nbsp;<span id="toSun" class="data"></span>&nbsp;AU<br>
-                        Distance from Earth:&nbsp;<span id="toEarth" class="data"></span>&nbsp;AU<br>
-                        Right Ascension:&nbsp;<span id="RA" class="data"></span>&rdquo;<br>
-                        Declination:&nbsp;<span id="dec" class="data"></span>&deg;<br>
-                        <span id="riseSet" class="data"></span>
-                        Altitude:&nbsp;<span id="alt" class="data"></span>&deg;<br>
-                        Azimuth:&nbsp;<span id="az" class="data"></span>&rdquo;<br>
-                        <span class="extraData">Hour Angle:&nbsp;<span id="ha" class="data"></span>&rdquo;<br></span>
-                        Elongation:&nbsp;<span id="elong" class="data"></span>&deg;
-                    </span>
-                    <span id="earth">
-                        <br>Distance from Sun:&nbsp;<span id="earthToSun" class="data"></span>&nbsp;AU<br>
-                        Sun Right Ascension:&nbsp;<span id="sunRA" class="data"></span>&rdquo;<br>
-                        Sun Declination:&nbsp;<span id="sunDec" class="data"></span>&deg;<br>
-                        Sun&nbsp;<span id="earthRiseSet" class="data"></span>
-                        Sun Altitude:&nbsp;<span id="sunAlt" class="data"></span>&deg;<br>
-                        Sun Azimuth:&nbsp;<span id="sunAz" class="data"></span>&rdquo;<br>
-                    </span>
-                </div>
-            </div>  
-            <h3>Set Time and Geolocation</h3>
-            <div>
-                <table>
-                    <tr>
-                        <td>
-                            <label for="manualYear">Year:</label>
-                            <input id="manualYear" title="Year (&plusmn;9999)">
-                        </td>
-                        <td>
-                            <label for="manualDay">MMDD:</label>
-                            <input id="manualDay" title="Month and Day (MMDD)">
-                        </td>
-                        <td>
-                            <label for="manualTime">Time:</label>
-                            <input id="manualTime" title="Time of Day (HHMM in military time)">
-                        </td>
-                        <td style="vertical-align: bottom;">
-                            <button id="setTime" title="Set time"><img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20width='100%25'%20height='100%25'%20viewBox='0%200%20756%20756'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20xml:space='preserve'%20xmlns:serif='http://www.serif.com/'%20style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3e%3cg%20transform='matrix(1.78105,-2.18115e-16,-1.42875e-16,-1.16667,-124.873,606.767)'%3e%3cg%20id='Layer1'%3e%3cpath%20d='M292.658,39.838L448.947,352.415L136.369,352.415L292.658,39.838Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            Valid date range: 9999 BC to 9999 AD<br>Use negative year values for BC<br>Time in 4-digit military time
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="manualLat">Lat:</label>
-                            <input id="manualLat" title="Latitude (decimal degrees)">
-                        </td>
-                        <td>
-                            <label for="manualLon">Lon:</label>
-                            <input id="manualLon" title="Longitude (decimal degrees)">
-                        </td>
-                        <td colspan="2" style="vertical-align: bottom;">
-                            <button id="setCoords" title="Set coordinates"><img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20width='100%25'%20height='100%25'%20viewBox='0%200%20756%20756'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20xml:space='preserve'%20xmlns:serif='http://www.serif.com/'%20style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3e%3cg%20transform='matrix(1.78105,-2.18115e-16,-1.42875e-16,-1.16667,-124.873,606.767)'%3e%3cg%20id='Layer1'%3e%3cpath%20d='M292.658,39.838L448.947,352.415L136.369,352.415L292.658,39.838Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            Use decimal degrees for lat/long,<br>negative values for west or south
-                        </td>
-                    </tr>
-                </table>
+  <script type="module" crossorigin src="/Not-Today-orrery/assets/index-D5_qAn_y.js"></script>
+  <link rel="stylesheet" crossorigin href="/Not-Today-orrery/assets/index-BYEywQnC.css">
+</head>
+
+<body>
+    <div id="inputBox">
+        <h3 id="date"></h3>
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <button id="now" title="Set time to now"><img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20width='100%25'%20height='100%25'%20viewBox='0%200%20756%20756'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20xml:space='preserve'%20xmlns:serif='http://www.serif.com/'%20style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3e%3cg%20transform='matrix(-2.05864e-16,1.12067,-0.734091,-1.3485e-16,344.624,152.708)'%3e%3cpath%20d='M292.658,39.838L448.947,352.415L136.369,352.415L292.658,39.838Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3cg%20transform='matrix(-7.16142e-17,1.16955,1.16955,7.16142e-17,-97.5997,-166.723)'%3e%3cpath%20d='M337.291,156.914C268.479,209.584%20228.122,291.297%20228.122,377.953C228.122,531.582%20352.849,656.31%20506.479,656.31C580.304,656.31%20651.105,626.983%20703.307,574.781L617.026,488.5C587.707,517.819%20547.942,534.29%20506.479,534.29C420.194,534.29%20350.141,464.238%20350.141,377.953C350.141,329.283%20372.808,283.39%20411.455,253.808L337.291,156.914Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3c/svg%3e"></button>
+                    </td>
+                    <td>
+                        <button id="reverse" title="Slow/reverse time"><img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20width='100%25'%20height='100%25'%20viewBox='0%200%20756%20756'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20xml:space='preserve'%20xmlns:serif='http://www.serif.com/'%20style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3e%3cg%3e%3cg%20transform='matrix(1.09058e-16,-1.78105,1.16667,7.14377e-17,263.071,899.19)'%3e%3cpath%20d='M292.658,39.838L448.947,352.415L136.369,352.415L292.658,39.838Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3cg%20transform='matrix(1,0,0,1,-29.6626,0)'%3e%3cpath%20d='M464.269,208.365L242.094,377.953L464.269,547.54L464.269,656.31L99.596,377.953L464.269,99.596L464.269,208.365Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e"></button>
+                    </td>
+                    <td id="speedfield">
+                        <span id="speed"></span><br>
+                        FPS:&nbsp;<span id="fps"></span>
+                    </td>
+                    <td>
+                        <button id="forward" title="Advance time"><img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20width='100%25'%20height='100%25'%20viewBox='0%200%20756%20756'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20xml:space='preserve'%20xmlns:serif='http://www.serif.com/'%20style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3e%3cg%20transform='matrix(-1,1.22465e-16,-1.22465e-16,-1,744.156,755.906)'%3e%3cg%20transform='matrix(1.09058e-16,-1.78105,1.16667,7.14377e-17,263.071,899.19)'%3e%3cpath%20d='M292.658,39.838L448.947,352.415L136.369,352.415L292.658,39.838Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3cg%20transform='matrix(1,0,0,1,-29.6626,0)'%3e%3cpath%20d='M464.269,208.365L242.094,377.953L464.269,547.54L464.269,656.31L99.596,377.953L464.269,99.596L464.269,208.365Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e"></button>
+                    </td>
+                    <td>
+                        <button id="play" title="Play/pause"><img id="playpause" src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20width='100%25'%20height='100%25'%20viewBox='0%200%20756%20756'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20xml:space='preserve'%20xmlns:serif='http://www.serif.com/'%20style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3e%3cg%20id='Layer2'%3e%3cg%20transform='matrix(1,0,0,1,-18.4112,0)'%3e%3crect%20x='214.027'%20y='99.596'%20width='146.042'%20height='556.714'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3cg%20transform='matrix(1,0,0,1,200.221,0)'%3e%3crect%20x='214.027'%20y='99.596'%20width='146.042'%20height='556.714'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" id="latlong">
+                        Geolocation:&nbsp;<span id="lat">Default (Greenwich, UK)</span>&nbsp;<span id="long"></span>
+                    </td>
+                </tr>
+                <tr class="extraData">
+                    <td colspan="5">
+                        MJD:&nbsp;<span id="mjd"></span>&nbsp;&nbsp;&bull;&nbsp;&nbsp;LST:&nbsp;<span
+                            id="lst"></span>&deg;
+                    </td>
+                </tr>
+            </table>
+            <label for="autocomplete"><b>SEARCH FOR AN OBJECT:</b></label>
+            <input id="autocomplete" title="Type an object's name">
+            <fieldset>
+                <legend>Include:&nbsp;&nbsp;</legend>
+                <input type="checkbox" name="moonBox" id="moonBox" title="Allow moons in search" checked>
+                <label for="moonBox">Moons</label>&nbsp;&nbsp;
+                <input type="checkbox" name="asteroidBox" id="asteroidBox" title="Allow asteroids in search" checked>
+                <label for="asteroidBox">Asteroids</label>&nbsp;&nbsp;
+                <input type="checkbox" name="cometBox" id="cometBox" title="Allow comets in search" checked>
+                <label for="cometBox">Comets</label>
+            </fieldset>
+            <div id="info">
+                <a id="infohead" href="" target="_blank"></a><br>
+                <a href="" target="_blank"><img src="" class="wikipic"></a><br>
+                <b><span id="planetInfo" class="data"></span></b><br>
+                Semimajor Axis:&nbsp;<span id="semiMajorAxis" class="data"></span><br>
+                Orbital Period:&nbsp;<span id="period" class="data"></span><br>
+                Eccentricity:&nbsp;<span id="eccentricity" class="data"></span><br>
+                Inclination:&nbsp;<span id="inclination" class="data"></span>&deg;<br>
+                Orbital Velocity: <span id="orbitVel" class="data"></span>&nbsp;km/s<br>
+                Radius:&nbsp;<span id="radius" class="data"></span>&nbsp;km<br>
+                Absolute Magnitude:&nbsp;<span id="absMag" class="data"></span>
+                <span id="earthRel">
+                    <br>Apparent Magnitude:&nbsp;<span id="appMag" class="data"></span><br>
+                    Distance from Sun:&nbsp;<span id="toSun" class="data"></span>&nbsp;AU<br>
+                    Distance from Earth:&nbsp;<span id="toEarth" class="data"></span>&nbsp;AU<br>
+                    Right Ascension:&nbsp;<span id="RA" class="data"></span>&rdquo;<br>
+                    Declination:&nbsp;<span id="dec" class="data"></span>&deg;<br>
+                    <span id="riseSet" class="data"></span>
+                    Altitude:&nbsp;<span id="alt" class="data"></span>&deg;<br>
+                    Azimuth:&nbsp;<span id="az" class="data"></span>&rdquo;<br>
+                    <span class="extraData">Hour Angle:&nbsp;<span id="ha" class="data"></span>&rdquo;<br></span>
+                    Elongation:&nbsp;<span id="elong" class="data"></span>&deg;
+                </span>
+                <span id="earth">
+                    <br>Distance from Sun:&nbsp;<span id="earthToSun" class="data"></span>&nbsp;AU<br>
+                    Sun Right Ascension:&nbsp;<span id="sunRA" class="data"></span>&rdquo;<br>
+                    Sun Declination:&nbsp;<span id="sunDec" class="data"></span>&deg;<br>
+                    Sun&nbsp;<span id="earthRiseSet" class="data"></span>
+                    Sun Altitude:&nbsp;<span id="sunAlt" class="data"></span>&deg;<br>
+                    Sun Azimuth:&nbsp;<span id="sunAz" class="data"></span>&rdquo;<br>
+                </span>
             </div>
-            <h3>Help</h3>
-            <div>
-                <p><b>SPACE BAR:</b> Pause/resume time<br>
+        </div>
+        <h3>Set Time and Geolocation</h3>
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <label for="manualYear">Year:</label>
+                        <input id="manualYear" title="Year (&plusmn;9999)">
+                    </td>
+                    <td>
+                        <label for="manualDay">MMDD:</label>
+                        <input id="manualDay" title="Month and Day (MMDD)">
+                    </td>
+                    <td>
+                        <label for="manualTime">Time:</label>
+                        <input id="manualTime" title="Time of Day (HHMM in military time)">
+                    </td>
+                    <td style="vertical-align: bottom;">
+                        <button id="setTime" title="Set time"><img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20width='100%25'%20height='100%25'%20viewBox='0%200%20756%20756'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20xml:space='preserve'%20xmlns:serif='http://www.serif.com/'%20style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3e%3cg%20transform='matrix(1.78105,-2.18115e-16,-1.42875e-16,-1.16667,-124.873,606.767)'%3e%3cg%20id='Layer1'%3e%3cpath%20d='M292.658,39.838L448.947,352.415L136.369,352.415L292.658,39.838Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        Valid date range: 9999 BC to 9999 AD<br>Use negative year values for BC<br>Time in 4-digit
+                        military time
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="manualLat">Lat:</label>
+                        <input id="manualLat" title="Latitude (decimal degrees)">
+                    </td>
+                    <td>
+                        <label for="manualLon">Lon:</label>
+                        <input id="manualLon" title="Longitude (decimal degrees)">
+                    </td>
+                    <td colspan="2" style="vertical-align: bottom;">
+                        <button id="setCoords" title="Set coordinates"><img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20width='100%25'%20height='100%25'%20viewBox='0%200%20756%20756'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20xml:space='preserve'%20xmlns:serif='http://www.serif.com/'%20style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3e%3cg%20transform='matrix(1.78105,-2.18115e-16,-1.42875e-16,-1.16667,-124.873,606.767)'%3e%3cg%20id='Layer1'%3e%3cpath%20d='M292.658,39.838L448.947,352.415L136.369,352.415L292.658,39.838Z'%20style='fill:rgb(70,80,95);'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        Use decimal degrees for lat/long,<br>negative values for west or south
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <h3>Help</h3>
+        <div>
+            <p><b>SPACE BAR:</b> Pause/resume time<br>
                 <b>LEFT/RIGHT ARROW KEYS:</b> Change speed<br>
                 <b>DOWN ARROW KEY:</b> Set to current time<br>
                 <b>UP ARROW KEY:</b> Toggle chase mode on focused object<br>
                 <b>ESC:</b> Release focus on object<br>
                 <b>F2:</b> Hide/show UI panels<br>
                 <b>F4:</b> Hide/show celestial sphere<br>
-                <b>F8:</b> Hide/show extra time info</p>
-                <p><b>CLICK ON LABELS:</b> Shift focus to object and display info<br>
+                <b>F8:</b> Hide/show extra time info
+            </p>
+            <p><b>CLICK ON LABELS:</b> Shift focus to object and display info<br>
                 <b>CLICK ON INFO HEADER OR IMAGE:</b> Learn more on Wikipedia<br>
                 <b>LEFT/MID/RIGHT MOUSE + DRAG:</b> Rotate/zoom/translate around focus<br>
-                <b>SCROLL WHEEL:</b> Zoom to focus</p>
-                <p><b>HTTP VARIABLES - SET ON LAUNCH:</b><br>
+                <b>SCROLL WHEEL:</b> Zoom to focus
+            </p>
+            <p><b>HTTP VARIABLES - SET ON LAUNCH:</b><br>
                 <b>x: (decimal degrees)</b> Longitude<br>
                 <b>y: (decimal degrees)</b> Latitude<br>
                 <b>t: (YYYYMMDDHHMM)</b> Date<br>
-                <b>n: (integer)</b> Small asteroid limit (max: <span id="smallRoids"></span>)</p>
-                <button id="openSplash">About</button>
-            </div>
-            <!--
+                <b>n: (integer)</b> Small asteroid limit (max: <span id="smallRoids"></span>)
+            </p>
+            <button id="openSplash">About</button>
+        </div>
+        <!--
             <h3>Display Options</h3>
             <div>
                 Orbit Opacity:<div id="slider"></div>
             </div>
             -->
-        </div>
+    </div>
 
-        <div id="splashScreen">
-            <img id="logo" src="/Not-Today-orrery/assets/logo-BPneSQHq.svg">
-            <p>CC BY 4.0 Chris Impink&nbsp;&nbsp;&bull;&nbsp;&nbsp;v1.1.7<br><br>
-            Data courtesy of <a href="http://nasa.gov" target="_blank">NASA</a>, <a href="http://jpl.nasa.gov" target="_blank">JPL</a>, <a href="http://en.wikipedia.org" target="_blank">Wikipedia</a>, and <a href="https://www.solarsystemscope.com" target="_blank">Solar System Scope</a>.<br>
-            Built with <a href="http://threejs.org" target="_blank">three.js</a> and <a href="http:jquery-ui.com" target="_blank">jQueryUI</a>. Available on <a href="https://github.com/bitterstoat/orrery" target="_blank">GitHub</a>.</p>
-            <button id="clearSplash">Close</button>
-        </div>
-    </body>
+    <div id="splashScreen">
+        <img id="logo" src="/Not-Today-orrery/assets/logo-BPneSQHq.svg">
+        <p>CC BY 4.0 Chris Impink&nbsp;&nbsp;&bull;&nbsp;&nbsp;v1.1.7<br><br>
+            Data courtesy of <a href="http://nasa.gov" target="_blank">NASA</a>, <a href="http://jpl.nasa.gov"
+                target="_blank">JPL</a>, <a href="http://en.wikipedia.org" target="_blank">Wikipedia</a>, and <a
+                href="https://www.solarsystemscope.com" target="_blank">Solar System Scope</a>.<br>
+            Built with <a href="http://threejs.org" target="_blank">three.js</a> and <a href="http:jquery-ui.com"
+                target="_blank">jQueryUI</a>. Available on <a href="https://github.com/bitterstoat/orrery"
+                target="_blank">GitHub</a>.</p>
+        <button id="clearSplash">Close</button>
+    </div>
+</body>
+
 </html>
