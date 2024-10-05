@@ -22,15 +22,6 @@
 				gl_FragColor = ( texture2D( baseTexture, vUv ) + vec4( 1.0 ) * texture2D( bloomTexture, vUv ) );
 			}
 		</script>
-
-        <script type="importmap">
-            {
-                "imports": {
-                    "three" : "./node_modules/three/build/three.module.js", 
-                    "three/examples/jsm/utils/BufferGeometryUtils.js" : "./node_modules/three/examples/jsm/utils/BufferGeometryUtils.js"
-                }
-            }
-        </script>
     
         <link rel="stylesheet" href="css/jquery-ui.min.css">
         <link rel="stylesheet" href="css/jquery-ui.structure.min.css">
