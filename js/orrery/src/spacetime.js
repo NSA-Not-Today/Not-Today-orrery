@@ -192,7 +192,7 @@ export function decToMinSec(n) {
     n = Math.abs(n);
     let deg = Math.floor(n);
     let min = parseFloat(("0" + Math.floor((n - deg) * 60)).slice(-2));
-    const sec = (n - deg - min/60) * 3600;
+    let sec = (n - deg - min/60) * 3600;
     if (sec >= 60) {
         min++;
         sec-=60;
