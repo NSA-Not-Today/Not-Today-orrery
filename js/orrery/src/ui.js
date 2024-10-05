@@ -36,44 +36,6 @@ function pauseResume() {
     ORR.times.rate = ORR.rates[ORR.times.speed];
 }
 
-document.addEventListener("keyup", function(event) { // keystroke handler
-    switch(event.code) {
-        case "ArrowLeft" : 
-            ORR.slowTime();
-        break;
-        case "ArrowRight" : 
-            ORR.speedTime();
-        break;
-        case "ArrowDown" : 
-            ORR.setTime(ORR.unixToMJD(Date.now()));
-        break;
-        case "Space" :
-            document.activeElement.blur();
-            pauseResume();
-        break;
-        case "Escape" : // unclick clicked tag
-            if (ORR.state.clickedLabel != "") {
-                closeTag(ORR.state.clickedLabel);
-            }
-        break;
-        case "ArrowUp" :
-            zoomToggle();
-        break;
-        case "F2":
-            $("#inputBox").toggle(300);
-        break;
-        case "F4":
-            $(".gratLabel").toggle();
-            ORR.cameraLocked.graticule.visible = !ORR.cameraLocked.graticule.visible;
-        break;
-        case "F8":
-            $(".extraData").toggle();
-            ORR.state.extraData = !ORR.state.extraData;
-        break;
-    }
-    ORR.times.rate = ORR.rates[ORR.times.speed]; // apply speed changes
-});
-
 /**
  * Handle tag clicks.
  * @param {number} t - System ID 
