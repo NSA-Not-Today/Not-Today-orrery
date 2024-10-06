@@ -101,7 +101,7 @@ export const transparentMaterial = new THREE.LineBasicMaterial( { transparent: t
 
 // orbit path materials
 export let pathMaterials = [
-    new THREE.LineBasicMaterial({ color: 0x0033ff, linewidth: 1, transparent:true, opacity: 0.5 }),
+    new THREE.LineBasicMaterial({ color: 0x909090, linewidth: 1, transparent:true, opacity: 0.5 }),
     new THREE.LineBasicMaterial({ color: 0x0033ff, linewidth: 1, transparent:true, opacity: 0.35 }),
     new THREE.LineBasicMaterial({ color: 0x0033ff, linewidth: 1, transparent:true, opacity: 0.3 }),
     new THREE.LineBasicMaterial({ color: 0x0033ff, linewidth: 1, transparent:true, opacity: 0.25 }),
