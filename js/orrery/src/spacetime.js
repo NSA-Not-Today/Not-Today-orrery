@@ -143,7 +143,12 @@ export function orbitPath(i) {
     ORR.system[i].updateOrbit();
     const orbitPath = ORR.system[i].celestial;
     const orbitGeometry = new THREE.BufferGeometry().setFromPoints( orbitPath );
-    const pathMaterial = ORR.system[i].isPHA ? ORR.pathMaterials[5] : ORR.pathMaterials[ORR.system[i].type];
+    let pathMaterial = ORR.pathMaterials[ORR.system[i].type];
+    if (ORR.system[i].isClosest) {
+        pathMaterial = ORR.pathMaterials[6]
+    } else if (ORR.system[i].isPHA) {
+        pathMaterial = ORR.pathMaterials[5]
+    }
     const path = new THREE.LineLoop( orbitGeometry, pathMaterial);
     path.initMaterial = pathMaterial;
     path.name = "path" + i;
