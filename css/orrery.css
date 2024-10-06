@@ -177,24 +177,6 @@ button img {
     vertical-align: middle;
 }
 
-#splashScreen {
-    width: 30%;
-    height: 30%;
-    left: 35%;
-    top: 35%;
-    padding: 1rem;
-    position: absolute;
-    z-index:10;
-    text-align: center;
-    color: #374151;
-    background-color: #374151;
-    border: 2px solid #052f57;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 #splash-content-container {
     margin-top: 5%;
     overflow-y: auto;
@@ -222,19 +204,64 @@ button img {
     border-radius: 50%;
 }
 
+@media only screen and (max-width: 768px) {
+    #splashScreen {
+        width: 30%;
+        height: 30%;
+        left: 30%;
+        top: 30%;
+        padding: 1rem;
+        position: absolute;
+        z-index:10;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #splash-loading-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    #splashScreen {
+        width: 30%;
+        height: 30%;
+        left: 35%;
+        top: 35%;
+        padding: 1rem;
+        position: absolute;
+        z-index:10;
+        text-align: center;
+        color: #374151;
+        background-color: #374151;
+        border: 2px solid #052f57;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #splash-loading-wrapper {
+        position: relative;
+        top: -20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        height: 150px;
+    }
+}
+
 #splashScreen p {
     color: #aaa;
     font-family: 'barlowregular', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#splash-loading-wrapper {
-    position: relative;
-    top: -20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 150px;
-    height: 150px;
 }
 
 #loading-ring {
