@@ -218,7 +218,6 @@ function launch() {
       ORR.precessing[i] = ORR.searchLists.orderedNames.findIndex((e) => e == ORR.precessing[i]);
     }
 
-    document.getElementById("smallRoids").innerHTML = smallAsteroids;
     $(".gratLabel, .extraData").hide();
     ORR.searchLists.combined = ORR.searchLists.planetNames.concat(ORR.searchLists.moonNames, ORR.searchLists.asteroidNames, ORR.searchLists.cometNames);
 
