@@ -185,8 +185,8 @@ button img {
 
 @media only screen and (max-width: 768px) {
     #splashScreen {
-        width: 30vw;
-        height: 30vw;
+        width: 30%;
+        height: 30%;
         left: 32%;
         top: 35%;
         padding: 1rem;
@@ -214,8 +214,8 @@ button img {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 70vw;
-        height: 70vw;
+        width: 70%;
+        height: 70%;
         border: 1px solid #9999aa;
         border-radius: 50%;
     }
@@ -225,8 +225,8 @@ button img {
         margin-bottom: 5px;
         position: relative;
         z-index: 1;
-        height: 65vw;
-        width: 65vw;
+        height: 65%;
+        width: 65%;
     }
 
     #loading-ring {
@@ -234,8 +234,8 @@ button img {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 90vw;
-        height: 90vw;
+        width: 90%;
+        height: 90%;
         border-top: 8px solid #9999aa;
         border-radius: 50%;
         animation: spin 1.5s linear infinite;

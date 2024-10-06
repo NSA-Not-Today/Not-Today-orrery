@@ -44,7 +44,6 @@ export const orbitPlot = { points: pointCount };
 const materials = {};
 
 if (/Mobi|Android/i.test(navigator.userAgent)) {
-    document.getElementById('speed-input-box').hidden = true;
     document.getElementById('splash-content-container').hidden = true;
 }
 
