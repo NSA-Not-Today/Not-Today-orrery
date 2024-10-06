@@ -150,12 +150,12 @@ legend {
 }
 
 button {
-    padding: 0;
     width: 2em;
     height: 2em;
     background-color: #222;
-    border-left-color: #272727;
-    border-top-color: #444;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 2px;
 }
 
 button :hover {
@@ -178,11 +178,11 @@ button img {
 }
 
 #splashScreen {
-    width: 50%;
-    height: 50%;
+    width: 30%;
+    height: 30%;
     position: absolute;
-    left:25%;
-    top: 25%;
+    left:35%;
+    top: 35%;
     z-index:10;
     text-align: center;
     color: #374151;
@@ -192,6 +192,11 @@ button img {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#splash-content-container {
+    margin-top: 5%;
+    overflow-y: auto;
 }
 
 #splashScreen img {
@@ -219,26 +224,6 @@ button img {
 #splashScreen p {
     color: #aaa;
     font-family: 'barlowregular', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#splash-quote-section {
-    padding: 5%;
-    flex-grow: 1;
-    margin-top: 10%;
-}
-
-#splash-quote {
-    display: flex;
-    flex-direction: row;
-    font-size: 1.5rem;
-    font-style: italic;
-    color: white;
-    margin-bottom: 1.25rem;
-}
-
-#quote-author {
-    font-size: 1.25rem;
-    color: white;
 }
 
 #splash-loading-wrapper {
