@@ -53,6 +53,30 @@
         <div id="inputBox">
             <h3 id="date"></h3>
             <div>
+                <table id="speed-input-box">
+                    <tr>
+                        <td>
+                            <button id="now" title="Set time to now"><img src="data/now.svg"></button>
+                        </td>
+                        <td>
+                            <button id="reverse" title="Slow/reverse time"><img src="data/rewind.svg"></button>
+                        </td>
+                        <td id="speedfield">
+                            <span id="speed"></span><br>
+                        </td>
+                        <td>
+                            <button id="forward" title="Advance time"><img src="data/ff.svg"></button>
+                        </td>
+                        <td>
+                            <button id="play" title="Play/pause"><img id="playpause" src="data/pause.svg"></button>
+                        </td>
+                    </tr>
+                    <tr class="extraData">
+                        <td colspan="5">
+                            MJD:&nbsp;<span id="mjd"></span>&nbsp;&nbsp;&bull;&nbsp;&nbsp;LST:&nbsp;<span id="lst"></span>&deg;
+                        </td>
+                    </tr>
+                </table>
                 <div id="info">
                     <a id="infohead" href="" target="_blank"></a><br>
                     <a href="" target="_blank"><img src="" class="wikipic"></a><br>
@@ -101,11 +125,6 @@
                 <img id="logo" src="data/logo.svg">
             </div>
             <div id="splash-content-container">
-                <script>
-                    if (/Mobi|Android/i.test(navigator.userAgent)) {
-                        document.getElementById('splash-content-container').hidden = true;
-                    }
-                </script>
                 <p>Seems like you are not going to be fossilized today...</p>
                 <p>Data courtesy of <a href="http://nasa.gov" target="_blank">NASA</a>, <a href="http://jpl.nasa.gov" target="_blank">JPL</a>, <a href="http://en.wikipedia.org" target="_blank">Wikipedia</a>, and <a href="https://www.solarsystemscope.com" target="_blank">Solar System Scope</a>.</p>
                 <button id="clearSplash">Close</button>
