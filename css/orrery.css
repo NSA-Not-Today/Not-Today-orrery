@@ -178,9 +178,10 @@ button img {
 }
 
 #splashScreen {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 30%;
+    height: 30%;
+    left: 35%;
+    top: 35%;
     padding: 1rem;
     position: absolute;
     z-index:10;
@@ -228,7 +229,7 @@ button img {
 
 #splash-loading-wrapper {
     position: relative;
-    margin-top: -20%;
+    top: -20%;
     display: flex;
     justify-content: center;
     align-items: center;
