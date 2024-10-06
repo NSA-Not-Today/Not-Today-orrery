@@ -37,8 +37,6 @@ export function animate(time) {
     readout += (ORR.times.speed > (ORR.times.pauseRate-2) && ORR.times.speed < (ORR.times.pauseRate+2)) ? ORR.EphTimeReadout(ORR.times.ephTime).c : "";
     readout += (ORR.times.speed > (ORR.times.pauseRate-4) && ORR.times.speed < (ORR.times.pauseRate+4)) ? ORR.EphTimeReadout(ORR.times.ephTime).d : "";
     document.getElementById("date").innerHTML = readout;
-    document.getElementById("speed").innerHTML = rateDesc[ORR.times.speed];
-    document.getElementById("fps").innerHTML = ORR.times.avgFPS.toFixed(2);
 
     if (ORR.state.extraData) {
         document.getElementById("mjd").innerHTML = ORR.EphTimeToMJD(ORR.times.ephTime).toFixed(3);
@@ -217,6 +215,8 @@ export function animate(time) {
     const animateID = requestAnimationFrame( animate );
 
     if (!ORR.state.showSplash) {
-        document.getElementById("splashScreen").style.display = "none";
+        setTimeout(() => {
+            document.getElementById("splashScreen").style.display = "none";
+        }, 2000);
     }
 }
