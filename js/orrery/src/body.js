@@ -4,6 +4,8 @@ import * as ORR from "./init.js";
  * @constructor
  * @param {string} name
  * @param {number} type - Body type (0: planet, 1: dwarf planets, 2: large asteroids or moons, 3: small moons (3 and up not labeled at launch), 4: small asteroids or comets (default type)
+ * @param {boolean} isNEO - is a Near Earth Object
+ * @param {boolean} isPHA - is a Potentially Hazardous Asteroid
  * @param {float} epoch - in MJD
  * @param {float} semiMajorAxis - in AU
  * @param {float} eccentricity
@@ -46,6 +48,11 @@ export class Body {
         this.meanOrbit = this.semiMajorAxis * (1 + this.eccentricity * this.eccentricity / 2);
         this.periapsis = (1 - this.eccentricity) * this.semiMajorAxis;
         this.apoapsis = (1 + this.eccentricity) * this.semiMajorAxis;
+        this.isNEO = this.type !== 0 && (this.semiMajorAxis * (1 - this.eccentricity)) <= 1.3;
+        //console.log("THIS OBJECT IS NEO???????????", this.isNEO)
+        this.isPHA = this.isNEO && (this.semiMajorAxis * (1 - this.eccentricity) <= 1.05) && this.absoluteMag <= 22;
+        //console.log("THIS OBJECT IS PHA???????????", this.isPHA);
+        this.shouldRender = this.isNEO || this.type === 0;
 
         // associated links
         this.info = this.hasData(params.info) ? params.info : "default";
