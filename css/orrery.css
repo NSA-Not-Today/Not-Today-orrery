@@ -150,12 +150,12 @@ legend {
 }
 
 button {
-    padding: 0;
     width: 2em;
     height: 2em;
     background-color: #222;
-    border-left-color: #272727;
-    border-top-color: #444;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 2px;
 }
 
 button :hover {
