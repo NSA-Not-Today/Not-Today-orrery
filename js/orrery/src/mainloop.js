@@ -49,7 +49,7 @@ export function animate(time) {
     }
 
     for (let i = 0; i < ORR.system.length; i++) {
-        if (ORR.system[i].shouldRender) {
+        // if (ORR.system[i].shouldRender) {
             // update position and rotation
             ORR.system[i].update(ORR.times.rate);
             const body = ORR.scene.children[ORR.system[i].childId];
@@ -88,7 +88,7 @@ export function animate(time) {
                     }
                 }
             }
-        }
+        // }
     }
 
     // update graticule labels
@@ -109,22 +109,22 @@ export function animate(time) {
     }
 
     for (let i = 0; i < ORR.moons.length; i++) {
-        if (ORR.moons[i].shouldRender) {
+        // if (ORR.moons[i].shouldRender) {
             ORR.paths[ORR.moons[i].path].position.x = ORR.system[ORR.paths[ORR.moons[i].path].orbitId].celestialPos.x;
             ORR.paths[ORR.moons[i].path].position.y = ORR.system[ORR.paths[ORR.moons[i].path].orbitId].celestialPos.y;
             ORR.paths[ORR.moons[i].path].position.z = ORR.system[ORR.paths[ORR.moons[i].path].orbitId].celestialPos.z;
-        }
+        // }
     }
-    // ORR.system[ORR.specialID.earth].baryPos = ORR.system[ORR.specialID.earth].celestialPos.clone().sub(ORR.system[ORR.specialID.moon].celestialPos).multiplyScalar(earthBary);
-    // const earthBody = ORR.scene.children[ORR.system[ORR.specialID.earth].childId];
-    // earthBody.position.x += ORR.system[ORR.specialID.earth].baryPos.x;
-    // earthBody.position.y += ORR.system[ORR.specialID.earth].baryPos.y;
-    // earthBody.position.z += ORR.system[ORR.specialID.earth].baryPos.z;
-    // const plutoBaryOffset = ORR.system[ORR.specialID.pluto].celestialPos.clone().sub(ORR.system[ORR.specialID.charon].celestialPos).multiplyScalar(plutoBary, );
-    // const plutoBody = ORR.scene.children[ORR.system[ORR.specialID.pluto].childId];
-    // plutoBody.position.x += plutoBaryOffset.x;
-    // plutoBody.position.y += plutoBaryOffset.y;
-    // plutoBody.position.z += plutoBaryOffset.z;
+    ORR.system[ORR.specialID.earth].baryPos = ORR.system[ORR.specialID.earth].celestialPos.clone().sub(ORR.system[ORR.specialID.moon].celestialPos).multiplyScalar(earthBary);
+    const earthBody = ORR.scene.children[ORR.system[ORR.specialID.earth].childId];
+    earthBody.position.x += ORR.system[ORR.specialID.earth].baryPos.x;
+    earthBody.position.y += ORR.system[ORR.specialID.earth].baryPos.y;
+    earthBody.position.z += ORR.system[ORR.specialID.earth].baryPos.z;
+    const plutoBaryOffset = ORR.system[ORR.specialID.pluto].celestialPos.clone().sub(ORR.system[ORR.specialID.charon].celestialPos).multiplyScalar(plutoBary, );
+    const plutoBody = ORR.scene.children[ORR.system[ORR.specialID.pluto].childId];
+    plutoBody.position.x += plutoBaryOffset.x;
+    plutoBody.position.y += plutoBaryOffset.y;
+    plutoBody.position.z += plutoBaryOffset.z;
 
     // update live info
     if (ORR.state.clickedLabel != "") {
