@@ -182,34 +182,12 @@ button img {
     overflow-y: auto;
 }
 
-#splashScreen img {
-    color: white;
-    margin-bottom: 5px;
-    position: relative;
-    z-index: 1;
-    height: 10rem;
-    width: 10rem;
-}
-
-#logo-background {
-    z-index: 0;
-    background-color: #9999aa;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10.5rem;
-    height: 10.5rem;
-    border: 1px solid #9999aa;
-    border-radius: 50%;
-}
-
 @media only screen and (max-width: 768px) {
     #splashScreen {
-        width: 30%;
-        height: 30%;
-        left: 30%;
-        top: 30%;
+        width: 30vw;
+        height: 30vw;
+        left: 32%;
+        top: 35%;
         padding: 1rem;
         position: absolute;
         z-index:10;
@@ -226,6 +204,41 @@ button img {
         align-items: center;
         width: 150px;
         height: 150px;
+    }
+
+    #logo-background {
+        z-index: 0;
+        background-color: #9999aa;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70vw;
+        height: 70vw;
+        border: 1px solid #9999aa;
+        border-radius: 50%;
+    }
+
+    #splashScreen img {
+        color: white;
+        margin-bottom: 5px;
+        position: relative;
+        z-index: 1;
+        height: 65vw;
+        width: 65vw;
+    }
+
+    #loading-ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90vw;
+        height: 90vw;
+        border-top: 8px solid #9999aa;
+        border-radius: 50%;
+        animation: spin 1.5s linear infinite;
+        z-index: 2;
     }
 }
 
@@ -257,24 +270,46 @@ button img {
         width: 150px;
         height: 150px;
     }
+
+    #logo-background {
+        z-index: 0;
+        background-color: #9999aa;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10.5rem;
+        height: 10.5rem;
+        border: 1px solid #9999aa;
+        border-radius: 50%;
+    }
+
+    #splashScreen img {
+        color: white;
+        margin-bottom: 5px;
+        position: relative;
+        z-index: 1;
+        height: 10rem;
+        width: 10rem;
+    }
+
+    #loading-ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 12rem;
+        height: 12rem;
+        border-top: 8px solid #9999aa;
+        border-radius: 50%;
+        animation: spin 1.5s linear infinite;
+        z-index: 2;
+    }
 }
 
 #splashScreen p {
     color: #aaa;
     font-family: 'barlowregular', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#loading-ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 12rem;
-    height: 12rem;
-    border-top: 8px solid #9999aa;
-    border-radius: 50%;
-    animation: spin 1.5s linear infinite;
-    z-index: 2;
 }
 
 @keyframes spin {
