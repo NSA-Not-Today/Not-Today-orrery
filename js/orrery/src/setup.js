@@ -106,6 +106,7 @@ export let pathMaterials = [
     new THREE.LineBasicMaterial({ color: 0x0033ff, linewidth: 1, transparent:true, opacity: 0.3 }),
     new THREE.LineBasicMaterial({ color: 0x0033ff, linewidth: 1, transparent:true, opacity: 0.25 }),
     new THREE.LineBasicMaterial({ color: 0x0033ff, linewidth: 1, transparent:true, opacity: 0.2 }),
+    new THREE.LineBasicMaterial({ color: 0xFFD700, linewidth: 1, transparent:true, opacity: 0.5 }),
     new THREE.LineBasicMaterial({ color: 0xc42b57, linewidth: 1, transparent:true, opacity: 0.5 })
   // FOOBAR
 ];

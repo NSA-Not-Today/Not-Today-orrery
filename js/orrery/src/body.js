@@ -6,6 +6,7 @@ import * as ORR from "./init.js";
  * @param {number} type - Body type (0: planet, 1: dwarf planets, 2: large asteroids or moons, 3: small moons (3 and up not labeled at launch), 4: small asteroids or comets (default type)
  * @param {boolean} isNEO - is a Near Earth Object
  * @param {boolean} isPHA - is a Potentially Hazardous Asteroid
+ * @param {boolean} isClosest - is one of the closest objects to Earth
  * @param {float} epoch - in MJD
  * @param {float} semiMajorAxis - in AU
  * @param {float} eccentricity
@@ -53,6 +54,8 @@ export class Body {
         this.isPHA = this.isNEO && (this.semiMajorAxis * (1 - this.eccentricity) <= 1.05) && this.absoluteMag <= 22;
         //console.log("THIS OBJECT IS PHA???????????", this.isPHA);
         this.shouldRender = this.isNEO || this.type === 0;
+        this.isClosest = (this.name == "2010 RF43" || this.name == "Apophis" || this.name == "Bennu")
+        //console.log(this.name, this.periapsis)
 
         // associated links
         this.info = this.hasData(params.info) ? params.info : "default";
