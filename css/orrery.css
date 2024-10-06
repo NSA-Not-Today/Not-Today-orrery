@@ -195,6 +195,7 @@ button img {
 }
 
 #splash-content-container {
+    margin-top: 5%;
     overflow-y: auto;
 }
 
@@ -223,26 +224,6 @@ button img {
 #splashScreen p {
     color: #aaa;
     font-family: 'barlowregular', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#splash-quote-section {
-    padding: 5%;
-    flex-grow: 1;
-    margin-top: 5%;
-}
-
-#splash-quote {
-    display: flex;
-    flex-direction: row;
-    font-size: 1.5rem;
-    font-style: italic;
-    color: white;
-    margin-bottom: 1.25rem;
-}
-
-#quote-author {
-    font-size: 1.25rem;
-    color: white;
 }
 
 #splash-loading-wrapper {
