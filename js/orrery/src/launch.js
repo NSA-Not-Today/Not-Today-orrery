@@ -169,12 +169,12 @@ function launch() {
     }
     ORR.searchLists.orderedNames = ORR.system.map(i => i.name);
     for (let i = 0; i < ORR.moons.length; i++) {
-      if (ORR.moons[i].shouldRender) {
+      // if (ORR.moons[i].shouldRender) {
         ORR.moons[i].orbitId = ORR.searchLists.orderedNames.findIndex((e) => e == ORR.moons[i].orbiting);
-      }
+      // }
     }
     for (let i = 0; i < ORR.system.length; i++) {
-      if (ORR.system[i].shouldRender) {
+      // if (ORR.system[i].shouldRender) {
         ORR.system[i].set(ORR.times.ephTime);
         const path = ORR.orbitPath(i);
         ORR.paths.push(path);
@@ -191,11 +191,11 @@ function launch() {
           ORR.scene.add(ORR.makePoint(ORR.system[i].name, i));
         }
         ORR.system[i].childId = ORR.scene.children.length - 1;
-      }
+      // }
     }
 
     for (let i = 0; i < ORR.moons.length; i++) {
-      if (ORR.moons[i].shouldRender) {
+      // if (ORR.moons[i].shouldRender) {
         ORR.paths[ORR.moons[i].path].orbitId = ORR.moons[i].orbitId;
         ORR.system[ORR.moons[i].orbitId].moons++;
         const rad = parseFloat(ORR.moons[i].radius);
@@ -205,7 +205,7 @@ function launch() {
           ORR.system[ORR.moons[i].orbitId].largestMoonRadius = rad;
         }
         $("#" + ORR.moons[i].sysId).hide();
-      }
+      // }
     }
 
     // barycentric bodies
