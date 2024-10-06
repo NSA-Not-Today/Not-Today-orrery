@@ -37,7 +37,6 @@ export function animate(time) {
     readout += (ORR.times.speed > (ORR.times.pauseRate-2) && ORR.times.speed < (ORR.times.pauseRate+2)) ? ORR.EphTimeReadout(ORR.times.ephTime).c : "";
     readout += (ORR.times.speed > (ORR.times.pauseRate-4) && ORR.times.speed < (ORR.times.pauseRate+4)) ? ORR.EphTimeReadout(ORR.times.ephTime).d : "";
     document.getElementById("date").innerHTML = readout;
-    document.getElementById("speed").innerHTML = rateDesc[ORR.times.speed];
 
     if (ORR.state.extraData) {
         document.getElementById("mjd").innerHTML = ORR.EphTimeToMJD(ORR.times.ephTime).toFixed(3);
