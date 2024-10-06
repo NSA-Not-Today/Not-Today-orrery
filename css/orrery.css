@@ -194,6 +194,10 @@ button img {
     align-items: center;
 }
 
+#splash-content-container {
+    overflow-y: auto;
+}
+
 #splashScreen img {
     color: white;
     margin-bottom: 5px;
@@ -224,7 +228,7 @@ button img {
 #splash-quote-section {
     padding: 5%;
     flex-grow: 1;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 #splash-quote {
