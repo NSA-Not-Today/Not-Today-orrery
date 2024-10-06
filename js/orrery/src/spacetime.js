@@ -139,12 +139,13 @@ export function reAxis(obj, ra, dec) {
  * @param {number} i - System ID
  * @returns {THREE.LineLoop} Path
  */
-export function orbitPath(i) { 
+export function orbitPath(i) {
     ORR.system[i].updateOrbit();
     const orbitPath = ORR.system[i].celestial;
     const orbitGeometry = new THREE.BufferGeometry().setFromPoints( orbitPath );
-    const path = new THREE.LineLoop( orbitGeometry, ORR.pathMaterials[ORR.system[i].type]);
-    path.initMaterial = ORR.pathMaterials[ORR.system[i].type];
+    const path = new THREE.LineLoop( orbitGeometry, ORR.system[i].isPHA ? ORR.pathMaterials[5] : ORR.pathMaterials[ORR.system[i].type]);
+    path.initMaterial = ORR.system[i].isPHA ? ORR.pathMaterials[5] : ORR.pathMaterials[ORR.system[i].type];
+    // TODO COLORESSSSS
     path.name = "path" + i;
     return path;
 }

@@ -51,41 +51,43 @@ export function animate(time) {
     }
 
     for (let i = 0; i < ORR.system.length; i++) {
-        // update position and rotation
-        ORR.system[i].update(ORR.times.rate);
-        const body = ORR.scene.children[ORR.system[i].childId];
-        body.position.x = ORR.system[i].celestialPos.x;
-        body.position.y = ORR.system[i].celestialPos.y;
-        body.position.z = ORR.system[i].celestialPos.z;
-        body.rotateOnAxis( new THREE.Vector3(0, 1, 0), ORR.system[i].thetaDot * ORR.times.rate );
-        ORR.system[i].toSun = ORR.system[i].celestialPos.length();
-        ORR.system[i].toEarth = ORR.system[i].celestialPos.clone().sub(ORR.system[ORR.specialID.earth].celestialPos);
+        if (ORR.system[i].shouldRender) {
+            // update position and rotation
+            ORR.system[i].update(ORR.times.rate);
+            const body = ORR.scene.children[ORR.system[i].childId];
+            body.position.x = ORR.system[i].celestialPos.x;
+            body.position.y = ORR.system[i].celestialPos.y;
+            body.position.z = ORR.system[i].celestialPos.z;
+            body.rotateOnAxis(new THREE.Vector3(0, 1, 0), ORR.system[i].thetaDot * ORR.times.rate);
+            ORR.system[i].toSun = ORR.system[i].celestialPos.length();
+            ORR.system[i].toEarth = ORR.system[i].celestialPos.clone().sub(ORR.system[ORR.specialID.earth].celestialPos);
 
-        // compute body's screenspace coordinates and place label
-        const tag = document.getElementById(i);
-        const tagPos = new THREE.Vector3().setFromMatrixPosition(body.matrixWorld).project(ORR.camera);
-        tagPos.x = (tagPos.x * ORR.center.x) + ORR.center.x;
-        tagPos.y = (tagPos.y * ORR.center.y * -1) + ORR.center.y;
-        if (redrawLabels) {
-            if (tag != undefined) {
-                if (Math.abs(tagPos.x - ORR.center.x) < ORR.center.x && Math.abs(tagPos.y - ORR.center.y) < ORR.center.y && tagPos.z < 1) {
-                    tag.style.left = Math.round(tagPos.x) + 10 + "px";
-                    tag.style.top = Math.round(tagPos.y) - 5 + "px";
-                    tag.style.visibility = "visible";
+            // compute body's screenspace coordinates and place label
+            const tag = document.getElementById(i);
+            const tagPos = new THREE.Vector3().setFromMatrixPosition(body.matrixWorld).project(ORR.camera);
+            tagPos.x = (tagPos.x * ORR.center.x) + ORR.center.x;
+            tagPos.y = (tagPos.y * ORR.center.y * -1) + ORR.center.y;
+            if (redrawLabels) {
+                if (tag != undefined) {
+                    if (Math.abs(tagPos.x - ORR.center.x) < ORR.center.x && Math.abs(tagPos.y - ORR.center.y) < ORR.center.y && tagPos.z < 1) {
+                        tag.style.left = Math.round(tagPos.x) + 10 + "px";
+                        tag.style.top = Math.round(tagPos.y) - 5 + "px";
+                        tag.style.visibility = "visible";
+                    } else {
+                        tag.style.visibility = "hidden";
+                    }
                 } else {
-                    tag.style.visibility = "hidden";
+                    const d = tagPos.distanceTo(ORR.state.mousePos);
+                    if (d < 15) {
+                        ORR.makeLabel(i);
+                        tempLabels.push(i);
+                    }
                 }
-            } else {
-                const d = tagPos.distanceTo(ORR.state.mousePos);
-                if (d < 15) {
-                    ORR.makeLabel(i);
-                    tempLabels.push(i);
-                }
-            }
-            if (tempLabels.length > 4) {
-                const tag = document.getElementById(tempLabels.shift());
-                if (!tag.classList.contains("active")) {
-                    tag.remove();
+                if (tempLabels.length > 4) {
+                    const tag = document.getElementById(tempLabels.shift());
+                    if (!tag.classList.contains("active")) {
+                        tag.remove();
+                    }
                 }
             }
         }
@@ -109,20 +111,22 @@ export function animate(time) {
     }
 
     for (let i = 0; i < ORR.moons.length; i++) {
-        ORR.paths[ORR.moons[i].path].position.x = ORR.system[ORR.paths[ORR.moons[i].path].orbitId].celestialPos.x;
-        ORR.paths[ORR.moons[i].path].position.y = ORR.system[ORR.paths[ORR.moons[i].path].orbitId].celestialPos.y;
-        ORR.paths[ORR.moons[i].path].position.z = ORR.system[ORR.paths[ORR.moons[i].path].orbitId].celestialPos.z;
+        if (ORR.moons[i].shouldRender) {
+            ORR.paths[ORR.moons[i].path].position.x = ORR.system[ORR.paths[ORR.moons[i].path].orbitId].celestialPos.x;
+            ORR.paths[ORR.moons[i].path].position.y = ORR.system[ORR.paths[ORR.moons[i].path].orbitId].celestialPos.y;
+            ORR.paths[ORR.moons[i].path].position.z = ORR.system[ORR.paths[ORR.moons[i].path].orbitId].celestialPos.z;
+        }
     }
-    ORR.system[ORR.specialID.earth].baryPos = ORR.system[ORR.specialID.earth].celestialPos.clone().sub(ORR.system[ORR.specialID.moon].celestialPos).multiplyScalar(earthBary);
-    const earthBody = ORR.scene.children[ORR.system[ORR.specialID.earth].childId];
-    earthBody.position.x += ORR.system[ORR.specialID.earth].baryPos.x;
-    earthBody.position.y += ORR.system[ORR.specialID.earth].baryPos.y;
-    earthBody.position.z += ORR.system[ORR.specialID.earth].baryPos.z;
-    const plutoBaryOffset = ORR.system[ORR.specialID.pluto].celestialPos.clone().sub(ORR.system[ORR.specialID.charon].celestialPos).multiplyScalar(plutoBary, );
-    const plutoBody = ORR.scene.children[ORR.system[ORR.specialID.pluto].childId];
-    plutoBody.position.x += plutoBaryOffset.x;
-    plutoBody.position.y += plutoBaryOffset.y;
-    plutoBody.position.z += plutoBaryOffset.z;
+    // ORR.system[ORR.specialID.earth].baryPos = ORR.system[ORR.specialID.earth].celestialPos.clone().sub(ORR.system[ORR.specialID.moon].celestialPos).multiplyScalar(earthBary);
+    // const earthBody = ORR.scene.children[ORR.system[ORR.specialID.earth].childId];
+    // earthBody.position.x += ORR.system[ORR.specialID.earth].baryPos.x;
+    // earthBody.position.y += ORR.system[ORR.specialID.earth].baryPos.y;
+    // earthBody.position.z += ORR.system[ORR.specialID.earth].baryPos.z;
+    // const plutoBaryOffset = ORR.system[ORR.specialID.pluto].celestialPos.clone().sub(ORR.system[ORR.specialID.charon].celestialPos).multiplyScalar(plutoBary, );
+    // const plutoBody = ORR.scene.children[ORR.system[ORR.specialID.pluto].childId];
+    // plutoBody.position.x += plutoBaryOffset.x;
+    // plutoBody.position.y += plutoBaryOffset.y;
+    // plutoBody.position.z += plutoBaryOffset.z;
 
     // update live info
     if (ORR.state.clickedLabel != "") {
