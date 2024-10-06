@@ -32,11 +32,6 @@ export class Body {
         this.epoch = this.hasData(params.epoch) ? parseFloat(params.epoch) : 51544.5;
         this.semiMajorAxis = this.hasData(params.a) ? parseFloat(params.a) : 1;
         this.eccentricity = this.hasData(params.e) ? parseFloat(params.e) : 0;
-        this.isNEO = this.type !== 0 && (this.semiMajorAxis * (1 - this.eccentricity)) <= 1.3;
-        //console.log("THIS OBJECT IS NEO???????????", this.isNEO)
-        this.isPHA = this.isNEO && (this.semiMajorAxis * (1 - this.eccentricity) <= 1.05) && this.absoluteMag <= 22;
-        //console.log("THIS OBJECT IS PHA???????????", this.isPHA);
-        this.shouldRender = this.isNEO || this.type === 0;
         this.inclination = this.hasData(params.inc) ? parseFloat(params.inc) * ORR.toRad : 0; // convert angles to radians
         this.w = this.hasData(params.w) ? parseFloat(params.w) * ORR.toRad : 0;
         this.longAscNode = this.hasData(params.omega) ? parseFloat(params.omega) * ORR.toRad : 0;
@@ -53,6 +48,11 @@ export class Body {
         this.meanOrbit = this.semiMajorAxis * (1 + this.eccentricity * this.eccentricity / 2);
         this.periapsis = (1 - this.eccentricity) * this.semiMajorAxis;
         this.apoapsis = (1 + this.eccentricity) * this.semiMajorAxis;
+        this.isNEO = this.type !== 0 && (this.semiMajorAxis * (1 - this.eccentricity)) <= 1.3;
+        //console.log("THIS OBJECT IS NEO???????????", this.isNEO)
+        this.isPHA = this.isNEO && (this.semiMajorAxis * (1 - this.eccentricity) <= 1.05) && this.absoluteMag <= 22;
+        //console.log("THIS OBJECT IS PHA???????????", this.isPHA);
+        this.shouldRender = this.isNEO || this.type === 0;
 
         // associated links
         this.info = this.hasData(params.info) ? params.info : "default";
