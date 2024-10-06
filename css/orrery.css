@@ -178,11 +178,11 @@ button img {
 }
 
 #splashScreen {
-    width: 50%;
-    height: 50%;
+    width: 30%;
+    height: 30%;
     position: absolute;
-    left:25%;
-    top: 25%;
+    left:35%;
+    top: 35%;
     z-index:10;
     text-align: center;
     color: #374151;
