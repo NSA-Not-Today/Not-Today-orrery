@@ -179,7 +179,8 @@ button img {
 
 #splash-content-container {
     margin-top: 5%;
-    overflow-y: auto;
+    //overflow-y: auto;
+    overflow: hidden;
 }
 
 @media only screen and (max-width: 768px) {
